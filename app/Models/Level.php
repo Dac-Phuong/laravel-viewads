@@ -19,4 +19,8 @@ class Level extends Model
         'number_ads',
         'bonus_ads',
     ];
+    public function viewers()
+    {
+        return $this->hasMany(Viewers::class);
+    }
 }

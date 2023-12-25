@@ -5,6 +5,7 @@ namespace App\Livewire\Viewer;
 use App\Models\Viewers;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class AddViewer extends Component
 {
@@ -30,7 +31,7 @@ class AddViewer extends Component
                 'username.required' => 'Trường tên tài khoản là bắt buộc.',
                 'username.regex' => 'Định dạng trường tên người dùng không hợp lệ.',
                 'email.required' => 'Trường email người dùng là bắt buộc.',
-                'email.unique' => 'Email này đã tồn tại.',
+                'email.unique' => 'Email đã tồn tại.',
                 'email.email' => 'Trường email phải là địa chỉ email hợp lệ.',
                 'phone.unique' => 'Số điện thoại đã tồn tại.',
                 'phone.regex' => 'Định dạng trường điện thoại không hợp lệ.',
@@ -40,20 +41,31 @@ class AddViewer extends Component
                 'password.min' => 'Trường mật khẩu tối thiểu 6 chữ số.',
             ]
         );
+        if ($this->code) {
+            $check_code = Viewers::where('code', $this->code)->first();
+            if (empty($check_code)) {
+                $this->dispatch('error', 'Mã giới thiệu không đúng');
+                return;
+            }
+        }
+        $shortenedUsername = substr($this->username, 0, 3);
+
         $create_viewer = Viewers::create(
             [
                 'username' => $this->username,
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'account_name' => $this->account_name,
+                'presenter_id'  => $check_code->id ?? 0,
                 'account_number' => $this->account_number,
-                'code' => $this->code,
+                'code' => $shortenedUsername . Str::random(5),
                 'password' => Hash::make($this->password),
                 'password_bank' => Hash::make($this->password_bank),
             ]
         );
         $create_viewer->save();
         $this->dispatch('success', 'Tạo người xem mới thành công');
+        $this->reset(['username', 'email', 'phone', 'account_name', 'account_number', 'password', 'password_bank', 'code']);
     }
     public function render()
     {

@@ -9,7 +9,7 @@ class ListViewer extends Component
 {
     public $list_viewers;
     public $search = '';
-    public $perpage = 3;
+    public $perpage = 10;
     protected $listeners = [
         'success' => 'updateViewer',
         'delete_viewer' => 'delete'

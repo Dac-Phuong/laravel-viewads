@@ -11,8 +11,9 @@
         <div class="col-md-2 ml-auto mr-3" style="margin-left:auto;margin-right:25px">
             <div class="input-group input-group-merge">
                 <span class="input-group-text" id="basic-addon-search31"><i class="ti ti-search"></i></span>
-                <input type="text" wire:model.live.debounce.300ms="search" class="form-control" placeholder="Search..."
-                    aria-label="Search..." aria-describedby="basic-addon-search31" fdprocessedid="pjzbzc">
+                <input type="text" wire:model.live.debounce.300ms="search" class="form-control"
+                    placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon-search31"
+                    fdprocessedid="pjzbzc">
             </div>
         </div>
         <div class="table-responsive text-nowrap p-3 mb-3">
@@ -20,27 +21,26 @@
                 <thead>
                     <tr>
                         <th>STT</th>
+                        <th>Mã giới thiệu</th>
                         <th>Tên tài khoản</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
                         <th>Cấp độ</th>
                         <th>Số dư</th>
-                        <th>Ngày tạo</th>
                         <th style="width:80px">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-              
-                    @if (isset($viewers))
+                    @if (count($viewers) > 0)
                         @foreach ($viewers as $key => $viewer)
                             <tr class="odd">
                                 <td>{{ ++$key }}</td>
+                                <td>{{ $viewer->code }}</td>
                                 <td>{{ $viewer->username }}</td>
                                 <td>{{ $viewer->email }}</td>
                                 <td>{{ $viewer->phone }}</td>
-                                <td>{{ $viewer->level }}</td>
-                                <td>{{ $viewer->created_at }}</td>
-                                <td>{{ $viewer->created_at }}</td>
+                                <td>{{ $viewer->level ?? 1 }}</td>
+                                <td>{{ number_format($viewer->account_balance) ?? 0 }} vnđ</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -61,7 +61,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="12"  style="text-align:center; color:red">
+                            <td colspan="12" style="text-align:center; color:red">
                                 Không có dữ liệu.
                             </td>
                         </tr>

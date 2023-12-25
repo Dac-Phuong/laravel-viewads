@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use  Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class ForgotPasswordController extends Controller {
-
+class ForgotPasswordController extends Controller
+{
     public function forgot_password( Request $request ) {
         $request->validate( [ 'email' => 'required|email' ] );
 
@@ -55,7 +56,6 @@ class ForgotPasswordController extends Controller {
                 ] )->save();
 
                 $user->setRememberToken( Str::random( 60 ) );
-
                 event( new PasswordReset( $user ) );
             }
         );

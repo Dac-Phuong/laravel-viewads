@@ -28,7 +28,7 @@ class UpdateViewer extends Component
             $this->phone = $this->viewer->phone;
             $this->account_name = $this->viewer->account_name;
             $this->account_number = $this->viewer->account_number;
-            $this->code = $this->viewer->code;
+            $this->code = '';
             $this->password = '';
             $this->password_bank = '';
         }
@@ -51,12 +51,19 @@ class UpdateViewer extends Component
                 'phone.numeric' => 'Vui lòng nhập chính xác số điện thoại',
             ]
         );
+        if ($this->code) {
+            $check_code = Viewers::where('code', $this->code)->first();
+            if (empty($check_code)) {
+                $this->dispatch('error', 'Mã giới thiệu không đúng');
+                return;
+            }
+        }
         $this->viewer->username = $this->username;
         $this->viewer->email = $this->email;
         $this->viewer->phone = $this->phone;
         $this->viewer->account_name = $this->account_name;
         $this->viewer->account_number = $this->account_number;
-        $this->viewer->code =  $this->code;
+        $this->viewer->presenter_id =   $check_code->id ?? 0;
         $this->viewer->password =  Hash::make($this->password);
         $this->viewer->password_bank =  Hash::make($this->password_bank);
         $this->viewer->save();

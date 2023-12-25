@@ -42,3 +42,13 @@ document.addEventListener("livewire:init", function () {
         });
     });
 });
+
+document.addEventListener("livewire:init", function () {
+    Livewire.on("error", function (error) {
+        swal.fire({
+            title: error,
+            icon: "error",
+            confirmButtonText: "Xác nhận!",
+        });
+    });
+});

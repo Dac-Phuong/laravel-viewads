@@ -1,8 +1,6 @@
 <?php
 	
 	namespace App\Models;
-	
-	// use Illuminate\Contracts\Auth\MustVerifyEmail;
 	use DateTimeInterface;
 	use Illuminate\Database\Eloquent\Factories\HasFactory;
 	use MongoDB\Laravel\Eloquent\Model as Eloquent;
