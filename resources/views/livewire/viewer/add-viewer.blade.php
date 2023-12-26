@@ -35,8 +35,8 @@
                                         fdprocessedid="86kjk">
                                 </div>
                                 @error('username')
-                                        <span class="error text-danger fs-7">{{ $message }}</span>
-                                    @enderror
+                                    <span class="error text-danger fs-7">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label class="form-label" for="basic-icon-default-email">Email</label>
@@ -65,7 +65,8 @@
                                 @enderror
                             </div>
                             <div class="mb-2">
-                                <label class="form-label" for="basic-icon-default-fullname">Tên chủ tài khoản ngân hàng</label>
+                                <label class="form-label" for="basic-icon-default-fullname">Tên chủ tài khoản ngân
+                                    hàng</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="ti ti-user"></i></span>
@@ -76,7 +77,8 @@
                                 </div>
                             </div>
                             <div class="mb-2">
-                                <label class="form-label" for="basic-icon-default-company">Số tài khoản ngân hàng</label>
+                                <label class="form-label" for="basic-icon-default-company">Số tài khoản ngân
+                                    hàng</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-company2" class="input-group-text"><i
                                             class="ti ti-credit-card"></i></span>
@@ -108,8 +110,8 @@
                                                 class="ti ti-eye-off"></i></span>
                                     </div>
                                     @error('password')
-                                            <span class="error text-danger fs-7">{{ $message }}</span>
-                                        @enderror
+                                        <span class="error text-danger fs-7">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="mb-2">

@@ -67,7 +67,7 @@
                         </tr>
                     @endif
             </table>
-            {{-- {{$viewers->links()}} --}}
+            {{$viewers->links()}}
         </div>
 
     </div>

@@ -50,7 +50,7 @@
              </a>
              <ul class="menu-sub">
                  <li class="menu-item {{ request()->routeIs('viewer-management.viewers*') ? 'active' : '' }}">
-                     <a  href="{{ url('/viewer-management/viewers') }}" class="menu-link " >
+                     <a href="{{ url('/viewer-management/viewers') }}" class="menu-link">
                          <div data-i18n="Danh sách">Danh sách</div>
                      </a>
                  </li>
@@ -102,7 +102,7 @@
              </a>
              <ul class="menu-sub">
                  <li class="menu-item {{ request()->routeIs('user-management.users.*') ? 'active' : '' }}">
-                     <a href="{{ url('/user-management/users') }}" class="menu-link" >
+                     <a href="{{ url('/user-management/users') }}" class="menu-link">
                          <div data-i18n="Danh sách">Danh sách</div>
                      </a>
                  </li>

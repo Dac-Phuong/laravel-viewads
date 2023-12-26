@@ -54,7 +54,6 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ '/assets/js/config.js' }}"></script>
     @livewireStyles
-    @livewireScripts
     <Style>
         .swal2-container {
             z-index: 1100 !important;
@@ -107,11 +106,6 @@
             color: #767283
         }
 
-        a.paginate_button.current {
-            background: #7367f0;
-            color: #fff;
-            border-radius: 5px;
-        }
 
         th {
             padding-right: 0px !important;
@@ -129,12 +123,9 @@
             border-bottom: none !important
         }
     </Style>
-
-
 </head>
 
 <body>
-    {{-- {{ $slot }} --}}
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -166,11 +157,6 @@
             <!-- / Layout page -->
         </div>
 
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
-
-        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-        <div class="drag-target"></div>
     </div>
     <!-- / Layout wrapper -->
 
@@ -185,6 +171,7 @@
     <script src="{{ '/assets/vendor/libs/hammer/hammer.js' }}"></script>
     <script src="{{ '/assets/vendor/libs/i18n/i18n.js' }}"></script>
     <script src="{{ '/assets/vendor/libs/typeahead-js/typeahead.js' }}"></script>
+
     <script src="{{ '/assets/vendor/js/menu.js' }}"></script>
 
     <!-- endbuild -->
@@ -206,6 +193,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     @yield('script_page')
+    @livewireScripts
+
 </body>
 
 </html>

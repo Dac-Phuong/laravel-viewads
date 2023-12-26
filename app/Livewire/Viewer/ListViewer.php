@@ -4,12 +4,13 @@ namespace App\Livewire\Viewer;
 
 use App\Models\Viewers;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 class ListViewer extends Component
 {
+    use WithPagination;
     public $list_viewers;
     public $search = '';
-    public $perpage = 10;
+    public $perpage = 3;
     protected $listeners = [
         'success' => 'updateViewer',
         'delete_viewer' => 'delete'
@@ -18,7 +19,7 @@ class ListViewer extends Component
     public function render()
     {
         return view('livewire.viewer.list-viewer', [
-            'viewers' => Viewers::search($this->search)->get()
+            'viewers' => Viewers::search($this->search)->paginate($this->perpage)
         ]);
     }
     public function updateViewer()
